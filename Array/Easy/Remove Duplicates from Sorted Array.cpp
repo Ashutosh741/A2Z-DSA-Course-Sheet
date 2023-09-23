@@ -23,3 +23,24 @@ public:
         return len;
     }
 };
+
+
+
+// optimal approach --> two pointers
+
+class Solution {
+public:
+    int removeDuplicates(vector<int>& nums) {
+        int n = nums.size();
+        int i=0,j=0;
+        for(;j<n;){
+            if(nums[i] != nums[j]){
+                swap(nums[i+1],nums[j]);
+                i++;j++;
+            }else{
+                j++;
+            }
+        }
+        return i+1;
+    }
+};
