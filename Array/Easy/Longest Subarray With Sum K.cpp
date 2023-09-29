@@ -21,3 +21,22 @@ int longestSubarrayWithSumK(vector<int> a, long long k) {
     return maxi;
     
 }
+
+
+// optimal approach two pointers
+
+int longestSubarrayWithSumK(vector<int> a, long long k) {
+    int n = a.size(),i=0,j=0,maxi=0;
+    long long sum = a[0];
+    while(j < n){
+        while(i <= j && sum > k){
+            sum-=a[i++];
+        }
+        if(sum == k){
+            maxi = max(maxi,j-i+1);
+        }
+        j++;
+        if(j < n)sum+=a[j];
+    }
+    return maxi;
+}
